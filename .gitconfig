@@ -23,7 +23,7 @@
     helper = oskeychain
 [push]
     default = simple
-	autoSetupRemote = true
+    autoSetupRemote = true
 [branch]
     autosetuprebase = always
 [hub]
