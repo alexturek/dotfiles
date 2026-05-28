@@ -1,5 +1,5 @@
 # mac osx specific stuff
-if [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" =~ "darwin"* ]]; then
   BREW_PATH=/usr/local/bin
   
   GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
