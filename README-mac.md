@@ -23,10 +23,10 @@
     - `Settings -> General -> Selection -> Clicking on a command selects it to restrict Find and Filter (off)`
 - Shell
   - From [this repo](https://github.com/alexturek/dotfiles)
-    - Copy over .bashrc
-    - Copy over .gitconfig
-    - Install homebrew
-    - Add “/opt/homebrew/bin” to /etc/paths
+    - Copy over `.bashrc`, `.bash_profile` into `~`
+    - Copy over `.gitconfig` into `~`
+    - [Install homebrew](https://brew.sh/)
+    - Add `/opt/homebrew/bin` to `/etc/paths`
     - `brew install bash git vim coreutils gawk gnu-getopt gnu-sed gnu-tar grep jq yq bash-completion`
 - [Add a new Github SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
   - `ssh-keygen -t ed25519 -C alex.turek@gmail.com`
