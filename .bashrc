@@ -1,22 +1,38 @@
 # mac osx specific stuff
 if [[ "$OSTYPE" =~ "darwin"* ]]; then
-  BREW_PATH=/usr/local/bin
-  
-  GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
+  export PATH=$PATH:/opt/homebrew/bin
+  BREW_PATH="$(brew --prefix)"
+
+  GUN_PATH=/opt/homebrew/opt/gnu-getopt/bin
+  GNU_PATH=/opt/homebrew/opt/gawk/libexec/gnubin
   GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-sed/libexec/gnubin
   GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-tar/libexec/gnubin
-  
-  OPENSSL_PATH=/usr/local/Cellar/openssl/1.0.2j/bin
-  
-  PATH=$BREW_PATH:$GNU_PATH:$OPENSSL_PATH:$SVN_PATH:$PATH:~/bin:./node_modules/.bin:.bin
 
-  GNU_MANPATH=/usr/local/opt/coreutils/libexec/gnuman
-  GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-sed/libexec/gnuman
-  GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-tar/libexec/gnuman
+  # Add gnu versions of utilities (from their brew install text)
+  PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
+  PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+  PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
+  PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+  PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+  PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 
-  OPENSSL_MANPATH=/usr/local/Cellar/openssl/1.0.2d_1/share/man
 
-  MANPATH=$GNU_MANPATH:$OPENSSL_MANPATH:$MANPATH
+  PATH=$BREW_PATH:$PATH:~/bin:./node_modules/.bin:.bin
+
+  # Add man page links
+  MANPATH="/opt/homebrew/opt/coreutils/libexec/gnuman:$MANPATH"
+  MANPATH="/opt/homebrew/opt/gawk/libexec/gnuman:$MANPATH"
+  MANPATH="/opt/homebrew/opt/gnu-getopt/gnuman:$MANPATH"
+  MANPATH="/opt/homebrew/opt/gnu-sed/libexec/gnuman:$MANPATH"
+  MANPATH="/opt/homebrew/opt/gnu-tar/libexec/gnuman:$MANPATH"
+  MANPATH="/opt/homebrew/opt/grep/libexec/gnuman:$MANPATH"
+
+  # old (delete these if man pages work)
+  # GNU_MANPATH=/usr/local/opt/coreutils/libexec/gnuman
+  # GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-sed/libexec/gnuman
+  # GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-tar/libexec/gnuman
+  #
+  # MANPATH=$GNU_MANPATH:$MANPATH
 fi
 
 # copied from http://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment
@@ -39,7 +55,8 @@ export PS1='\[\e[92m\]\u\[\e[0m\] @ \[\e[93m\]\h\[\e[0m\] \[\e[96m\]\w\[\e[0m\]>
 alias gitst="git status";
 alias gitdiff="git diff HEAD";
 
-source ~/.git-completion.bash
+# git autocomplete in bash (assumes homebrew)
+[[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
 alias ls="ls --color=auto" # this is for GNU ls
 alias grep="grep --color=auto" # this is for GNU grep
@@ -50,9 +67,6 @@ export PROMPT_COMMAND='echo -ne "\033]0;${PWD/#$HOME/~}\007"'
 # Python
 # If there's a virtualenv in this directory, use its bin
 PATH=./env/bin:$PATH
-
-# Github tokens
-. ~/.github-tokens
 
 # To make 'psql' work without -h commands
 export PGHOST=localhost
