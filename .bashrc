@@ -31,7 +31,7 @@ export LSCOLORS=GxFxCxDxBxegedabagaced
 # export LS_OPTIONS='--color=auto'
 
 # username @ hostname shortpath>
-export PS1='\[\e[92m\]\u\[\e[0m\] @ \[\e[93m\]\h\[\e[0m\] \[\e[96m\]\W\[\e[0m\]> '
+export PS1='\[\e[92m\]\u\[\e[0m\] @ \[\e[93m\]\h\[\e[0m\] \[\e[96m\]\w\[\e[0m\]> '
 
 # git shortcuts
 alias gitst="git status";
