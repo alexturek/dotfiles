@@ -1,21 +1,23 @@
-BREW_PATH=/usr/local/bin
+# mac osx specific stuff
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  BREW_PATH=/usr/local/bin
+  
+  GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
+  GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-sed/libexec/gnubin
+  GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-tar/libexec/gnubin
+  
+  OPENSSL_PATH=/usr/local/Cellar/openssl/1.0.2j/bin
+  
+  PATH=$BREW_PATH:$GNU_PATH:$OPENSSL_PATH:$SVN_PATH:$PATH:~/bin:./node_modules/.bin:.bin
 
-GNU_PATH=/usr/local/opt/coreutils/libexec/gnubin
-GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-sed/libexec/gnubin
-GNU_PATH=$GNU_PATH:/usr/local/opt/gnu-tar/libexec/gnubin
+  GNU_MANPATH=/usr/local/opt/coreutils/libexec/gnuman
+  GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-sed/libexec/gnuman
+  GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-tar/libexec/gnuman
 
-OPENSSL_PATH=/usr/local/Cellar/openssl/1.0.2j/bin
+  OPENSSL_MANPATH=/usr/local/Cellar/openssl/1.0.2d_1/share/man
 
-PATH=$BREW_PATH:$GNU_PATH:$OPENSSL_PATH:$SVN_PATH:$PATH:~/bin:./node_modules/.bin:.bin
-
-
-GNU_MANPATH=/usr/local/opt/coreutils/libexec/gnuman
-GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-sed/libexec/gnuman
-GNU_MANPATH=$GNU_MANPATH:/usr/local/opt/gnu-tar/libexec/gnuman
-
-OPENSSL_MANPATH=/usr/local/Cellar/openssl/1.0.2d_1/share/man
-
-MANPATH=$GNU_MANPATH:$OPENSSL_MANPATH:$MANPATH
+  MANPATH=$GNU_MANPATH:$OPENSSL_MANPATH:$MANPATH
+fi
 
 # copied from http://unix.stackexchange.com/questions/148/colorizing-your-terminal-and-shell-environment
 export TERM=xterm-color
