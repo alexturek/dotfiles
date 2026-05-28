@@ -10,9 +10,6 @@
     branchdates = for-each-ref --sort=-committerdate refs/heads/ --format='%(color:red)%(committerdate:short)%(color:reset) %(color:green)(%(committerdate:relative))%(color:reset) %(color:yellow)%(refname:short)%(color:reset) - %(subject) - %(color:bold blue)<%(authorname)>%(color:reset)'
     cleanup = !git branch --merged | grep  -v -E '\\*|master' | xargs -n 1 git branch -d
     done = !~/scripts/git_done.sh $1
-    hubdiff = !sh -c 'echo `git remote get-url origin | sed "s/\\.git$//"`/compare/$0...$1'
-    netdiff = !git diff $(git merge-base main $1)..$1
-    netdiffstat = !git diff --stat $(git merge-base main $1)..$1
 [core]
     editor = vim
     pager = less
@@ -26,5 +23,3 @@
     autoSetupRemote = true
 [branch]
     autosetuprebase = always
-[hub]
-    host = github.com
