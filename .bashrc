@@ -70,3 +70,7 @@ PATH=./env/bin:$PATH
 
 # To make 'psql' work without -h commands
 export PGHOST=localhost
+. "$HOME/.cargo/env"
+
+# Rust
+. "$HOME/.cargo/env"
