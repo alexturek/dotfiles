@@ -75,3 +75,10 @@ export PGHOST=localhost
 if [ -f "$HOME/.cargo/env" ] ; then
     . "$HOME/.cargo/env"
 fi
+
+# ssh setup
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval $(ssh-agent -s)
+fi
+
+`ssh-add -l > /dev/null 2>&1 || ssh-add ~/.ssh/id_ed25519`
